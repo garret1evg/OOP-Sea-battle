@@ -1,4 +1,4 @@
 *exe
-bit\*
-obj\*
-.vs\*
+/SeaBatle/SeaBatle/bin/*
+/SeaBatle/SeaBatle/obj/*
+/SeaBatle/.vs/*
