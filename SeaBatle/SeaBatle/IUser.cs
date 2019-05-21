@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeaBatle
 {
-    class Deck
+    class IUser
     {
-        public Status status;
-        public AShip ship;
     }
 }

@@ -8,6 +8,11 @@ namespace SeaBatle
 {
     class Cell
     {
+        public Cell(int x, int y)
+        {
+            this.coordinateX = x;
+            this.coordinateY = y;
+        }
         public int coordinateX;
         public int coordinateY;
         public Deck Deck = null;

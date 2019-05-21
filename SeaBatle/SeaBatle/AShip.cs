@@ -17,7 +17,12 @@ namespace SeaBatle
     {
         public Status status;
         public int size;
+        public int id;
         public List<Deck> decks;
+        public void Blow()
+        {
+            Console.WriteLine("Ship was destroyed");
+        }
 
     }
 }
