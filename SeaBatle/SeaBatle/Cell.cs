@@ -13,6 +13,7 @@ namespace SeaBatle
             this.coordinateX = x;
             this.coordinateY = y;
         }
+        public Status status;
         public int coordinateX;
         public int coordinateY;
         public Deck Deck = null;

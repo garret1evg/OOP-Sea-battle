@@ -8,13 +8,9 @@ namespace SeaBatle
 {
     class Map
     {
-        public int mapSize = 10;
+        public int mapSize;
         Cell[,] cells;
-        public Map()
-        {
-            cells = new Cell[mapSize, mapSize];
-        }
-        public Map(int size)
+        public Map(int size=10)
         {
             this.mapSize = size;
             cells = new Cell[mapSize, mapSize];

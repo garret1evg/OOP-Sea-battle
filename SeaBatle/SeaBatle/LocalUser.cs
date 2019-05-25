@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace SeaBatle
 {
-    interface IUser
+    class LocalUser : IUser
     {
-        //Bridge
-        int Shoot();
+        public int Shoot()
+        {
+            Console.Write("pif");
+            return 1;
+        }
     }
 }

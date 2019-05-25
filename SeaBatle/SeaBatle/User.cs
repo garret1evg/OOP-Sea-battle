@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace SeaBatle
 {
-    interface IUser
+    class User
     {
-        //Bridge
-        int Shoot();
+        IUser user;
+        public User(IUser u)
+        {
+            this.user = u;
+        }
     }
 }
