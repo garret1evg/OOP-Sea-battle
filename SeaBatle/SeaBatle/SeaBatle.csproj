@@ -58,6 +58,7 @@
     <Compile Include="BotUser.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="LocalUser.cs" />
+    <Compile Include="ShipCreator.cs" />
     <Compile Include="ShipList.cs" />
     <Compile Include="User.cs" />
     <Page Include="MainWindow.xaml">

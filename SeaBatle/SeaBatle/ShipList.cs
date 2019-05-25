@@ -8,6 +8,15 @@ namespace SeaBatle
 {
     class ShipList
     {
-        public List<AShip> activeShips;
+        private List<AShip> activeShips;
+        public void Push(AShip ship)
+        {
+            activeShips.Add(ship);
+        }
+        public void Delete(AShip ship)
+        {
+            activeShips.Remove(ship);
+        }
+        
     }
 }

@@ -8,6 +8,11 @@ namespace SeaBatle
 {
     class Deck
     {
+        public Deck(AShip ship)
+        {
+            this.status = Status.ok;
+            this.ship = ship;
+        }
         public Status status;
         public AShip ship;
     }
