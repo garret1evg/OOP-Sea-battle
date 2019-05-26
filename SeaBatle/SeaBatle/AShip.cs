@@ -34,6 +34,7 @@ namespace SeaBatle
                 this.decks.Add(new Deck(this));
             }
         }
+
         public void Blow()
         {
             Console.WriteLine("Ship was destroyed");
@@ -43,6 +44,7 @@ namespace SeaBatle
     class Submarine : AShip
     {
         public int size=1;
+     
 
     }
     class SmallBoat : AShip

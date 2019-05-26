@@ -13,5 +13,40 @@ namespace SeaBatle
         {
             this.user = u;
         }
+        public bool SetShips(Map map, ShipList list)
+        {
+            return user.SetShipsOnMap(map, list);
+        }
+
+    }
+    interface IUser
+    {
+        //Bridge
+        int Shoot();
+        bool SetShipsOnMap(Map map, ShipList list);
+    }
+    class LocalUser : IUser
+    {
+        public int Shoot()
+        {
+            Console.Write("pif");
+            return 1;
+        }
+        public bool SetShipsOnMap(Map map, ShipList list)
+        {
+            return true;
+        }
+    }
+    class BotUser : IUser
+    {
+        public int Shoot()
+        {
+            Console.Write("pif");
+            return 1;
+        }
+        public bool SetShipsOnMap(Map map, ShipList list)
+        {
+            return true;
+        }
     }
 }

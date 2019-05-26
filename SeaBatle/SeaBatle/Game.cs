@@ -10,6 +10,9 @@ namespace SeaBatle
     {
         User user1;
         User user2;
-
+        public Unit CreateUnit(User user)
+        {
+            return new Unit(new Map(),user,new ShipList());
+        }
     }
 }

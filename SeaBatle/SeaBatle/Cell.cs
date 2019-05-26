@@ -16,6 +16,10 @@ namespace SeaBatle
         public Status status;
         public int coordinateX;
         public int coordinateY;
-        public Deck Deck = null;
+        public Deck deck = null;
+        public void putDeck(Deck deck)
+        {
+            this.deck = deck;
+        }
     }
 }

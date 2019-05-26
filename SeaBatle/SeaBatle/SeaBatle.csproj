@@ -55,11 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BotUser.cs" />
-    <Compile Include="IUser.cs" />
-    <Compile Include="LocalUser.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="ShipCreator.cs" />
     <Compile Include="ShipList.cs" />
+    <Compile Include="Unit.cs" />
     <Compile Include="User.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
