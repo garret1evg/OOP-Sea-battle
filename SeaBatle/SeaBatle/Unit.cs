@@ -25,7 +25,8 @@ namespace SeaBatle
             do
             {
                 ship = creator.GetShip();
-                this.list.Push(ship);
+                if (ship != null)
+                    this.list.Push(ship);
             } while (ship != null);
         }
 

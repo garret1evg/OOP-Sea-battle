@@ -24,5 +24,34 @@ namespace SeaBatle
         {
             InitializeComponent();
         }
+
+        private void onClickDebug(object sender, RoutedEventArgs e)
+        {
+            Map map = new Map();
+            
+            TextBox1.Text = map.DrawToStr();
+            
+
+
+        }
+
+        private void onClickDebugSetShips(object sender, RoutedEventArgs e)
+        {
+            Map map = new Map();
+            ShipList list = new ShipList();
+
+            IUser iBot = new BotUser();
+            User bot = new User(iBot);
+            Unit unit = new Unit(map, bot, list);
+            
+            unit.fillList();
+            bot.SetShips(map, list);
+            //foreach (AShip ship in list.activeShips)
+            //{
+              //  TextBox1.Text = ship.ToString();
+            //}
+            //TextBox1.Text = list.ToString();
+            TextBox1.Text = map.DrawToStr();
+        }
     }
 }

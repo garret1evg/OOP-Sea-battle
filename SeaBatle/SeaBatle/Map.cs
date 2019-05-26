@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SeaBatle
 {
@@ -28,13 +29,13 @@ namespace SeaBatle
         }
         public bool CheckCell(int x,int y)
         {
-            if (x > 0 && x<mapSize && y>0 && y < mapSize)
+            if (x >= 0 && x<mapSize && y>=0 && y < mapSize)
             {
                 for(int i = x - 1; i <= x + 1; i++)
                 {
                     for(int j = y - 1; j <= y + 1; j++)
                     {
-                        if (cells[i, j] != null)
+                        if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
                         {
                             if (cells[i, j].deck != null)
                             {
@@ -53,7 +54,7 @@ namespace SeaBatle
 
             if (dir == Direction.right)
             {
-                for(int i=x;i<x+size;x++)
+                for(int i=x;i<x+size;i++)
                 {
                     if (!CheckCell(i, y))
                         return false;
@@ -61,7 +62,7 @@ namespace SeaBatle
             }
             else if(dir == Direction.left)
             {
-                for (int i = x; i > x - size; x--)
+                for (int i = x; i > x - size; i--)
                 {
                     if (!CheckCell(i, y))
                         return false;
@@ -69,7 +70,7 @@ namespace SeaBatle
             }
             else if (dir == Direction.down)
             {
-                for (int i = y; i < y + size; y++)
+                for (int i = y; i < y + size; i++)
                 {
                     if (!CheckCell(x, i))
                         return false;
@@ -77,7 +78,7 @@ namespace SeaBatle
             }
             else if(dir == Direction.up)
             {
-                for (int i = y; i > y - size;y--)
+                for (int i = y; i > y - size;i--)
                 {
                     if (!CheckCell(x, i))
                         return false;
@@ -87,6 +88,7 @@ namespace SeaBatle
         }
         public bool SetShipOnMap (AShip ship,Direction dir , int x,int y)
         {
+            
             if (!CheckPlaceForShip(ship.size, dir, x,y))
                 return false;
             if (dir == Direction.right)
@@ -122,6 +124,27 @@ namespace SeaBatle
                 }
             }
             return true;
+        }
+
+        public String DrawToStr()
+        {
+            String map = "    ";
+            
+            for (int i = 0; i < mapSize; i++)
+            {
+                map += i + "   ";
+            }
+            map += "\n";
+            for (int y = 0; y < mapSize; y++)
+            {
+                map += (char)(Convert.ToUInt16('A')+y)+"   ";
+                for (int x = 0; x < mapSize; x++)
+                {
+                    map += cells[x, y].ToString() + "   ";
+                }
+                map += "\n";
+            }
+            return map;
         }
 
 

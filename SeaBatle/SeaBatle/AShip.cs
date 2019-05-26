@@ -25,11 +25,12 @@ namespace SeaBatle
         public Status status;
         public int size;
         public int id;
-        public List<Deck> decks;
-        public AShip()
+        public List<Deck> decks =new List<Deck>();
+        public AShip(int lenght)
         {
             this.status = Status.ok;
-            for (int i = 0; i < size; i++)
+            size = lenght;
+            for (int i = 0; i < lenght; i++)
             {
                 this.decks.Add(new Deck(this));
             }
@@ -43,20 +44,38 @@ namespace SeaBatle
     }
     class Submarine : AShip
     {
-        public int size=1;
-     
+        
+        public static int size=1;
+        public Submarine(): base(size)
+        {
+
+        }
+        
+
 
     }
     class SmallBoat : AShip
     {
-        public int size = 2;
+        public static int size = 2;
+        public SmallBoat() : base(size)
+        {
+
+        }
     }
     class MediumBoat : AShip
     {
-        public int size = 3;
+        public static int size = 3;
+        public MediumBoat() : base(size)
+        {
+
+        }
     }
     class BigBoat : AShip
     {
-        public int size = 4;
+        public static int size = 4;
+        public BigBoat() : base(size)
+        {
+
+        }
     }
 }

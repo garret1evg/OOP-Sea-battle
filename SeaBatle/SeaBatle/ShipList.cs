@@ -8,7 +8,7 @@ namespace SeaBatle
 {
     class ShipList
     {
-        private List<AShip> activeShips;
+        public List<AShip> activeShips = new List<AShip>();
         public void Push(AShip ship)
         {
             activeShips.Add(ship);
