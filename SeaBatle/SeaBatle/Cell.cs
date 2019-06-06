@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 
 namespace SeaBatle
 {
-    class Cell
+    abstract class AbstractCell
+    {
+        //proxy
+        public abstract Status GetStatus();
+        public abstract Status TakeShoot(int x,int y);
+    }
+    class Cell : AbstractCell
     {
         public Cell(int x, int y)
         {
             this.coordinateX = x;
             this.coordinateY = y;
+            status = Status.ok;
         }
-        public Status status = Status.ok;
+        public Status status;
         public int coordinateX;
         public int coordinateY;
         public Deck deck = null;
@@ -31,6 +38,21 @@ namespace SeaBatle
             if (status == Status.ok)
                 return "O";
             else return "*";
+        }
+        public override Status GetStatus()
+        {
+            if (deck == null)
+                return status;
+            else
+                return deck.GetStatus();
+        }
+        public override Status TakeShoot(int x, int y)
+        {
+            if (deck == null)
+            {
+                status = Status.miss;
+                return status;
+            }
         }
     }
 }

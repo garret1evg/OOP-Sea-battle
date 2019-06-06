@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace SeaBatle
 {
-    class Unit
+     class Unit
     {
-        Map map;
+        Map myMap;
+        Map enemyMap;
         User user;
         ShipList list;
-        public Unit (Map m,User u,ShipList l)
+        public Unit (Map myMap,Map enMap,User u,ShipList l)
         {
-            this.map = m;
+            this.myMap = myMap;
+            this.enemyMap = enMap;
             this.user = u;
             this.list = l;
         }
@@ -32,7 +34,29 @@ namespace SeaBatle
 
         public void SetShips()
         {
-            user.SetShips(map, list);
+            user.SetShips(myMap, list);
         }
+        public int[] Shoot()
+        {
+            int[] coords;
+            do
+            {
+                coords = user.Shoot(enemyMap);
+            } while (enemyMap.CheckForShootableCell(coords[0], coords[1]));
+            
+            return coords;
+        }
+        public Status CheckHit(int x,int y)
+        {
+            
+            return myMap.CheckShootResult(x, y);
+        }
+        public void ShootReport(Status status)
+        {
+
+        }
+        
     }
+
+   
 }

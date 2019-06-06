@@ -17,20 +17,25 @@ namespace SeaBatle
         {
             return user.SetShipsOnMap(map, list);
         }
+        public int[] Shoot(Map map)
+        {
+            return user.Shoot(map);
+        }
+
 
     }
     interface IUser
     {
         //Bridge
-        int Shoot();
+        int[] Shoot(Map map);
         bool SetShipsOnMap(Map map, ShipList list);
     }
     class LocalUser : IUser
     {
-        public int Shoot()
+        public int[] Shoot(Map map)
         {
-            Console.Write("pif");
-            return 1;
+            int[] coords = { };
+            return coords;
         }
         public bool SetShipsOnMap(Map map, ShipList list)
         {
@@ -39,10 +44,80 @@ namespace SeaBatle
     }
     class BotUser : IUser
     {
-        public int Shoot()
+        Random rand = new Random();
+        public int[] Shoot(Map map)
         {
-            Console.Write("pif");
-            return 1;
+            int size = map.mapSize;
+            int x = -1;
+            int y = -1;
+            bool ready = false;
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (map.CheckForHitCell(i,j))
+                    {
+                        x = i;
+                        y = j;
+                    }
+                }
+            }
+            if (x == -1)
+            {
+                do
+                {
+                    x = rand.Next(size);
+                    y = rand.Next(size);
+                } while (map.CheckForShootableCell(x,y));
+                ready = true;
+            }
+            else
+            {
+                if (map.CheckForHitCell(x + 1, y))
+                {
+                    if (map.CheckForShootableCell(x - 1, y))
+                    {
+                        x--;
+                        ready = true;
+                    }
+                }
+                if (map.CheckForHitCell(x, y+1))
+                {
+                    if (map.CheckForShootableCell(x , y-1))
+                    {
+                        y--;
+                        ready = true;
+                    }
+                }
+                if (!ready)
+                {
+                    int dir = rand.Next(4);
+                    int i = x;
+                    int j = y;
+                    do
+                    {
+                        if (dir == 0)
+                        {
+                            i--;
+                        }else if (dir == 1)
+                        {
+                            j--;
+                        }
+                        else if (dir == 2)
+                        {
+                            i++;
+                        }
+                        else
+                        {
+                            j++;
+                        }
+                    } while (map.CheckForShootableCell(i, j));
+                    x = i;
+                    y = j;
+                }
+            }
+            int[] coords = {x,y};
+            return coords;
         }
 
         public bool SetShipsOnMap(Map map, ShipList list)

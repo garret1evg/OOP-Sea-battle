@@ -42,15 +42,11 @@ namespace SeaBatle
 
             IUser iBot = new BotUser();
             User bot = new User(iBot);
-            Unit unit = new Unit(map, bot, list);
+            Unit unit = new Unit(map,new Map(), bot, list);
             
             unit.fillList();
             bot.SetShips(map, list);
-            //foreach (AShip ship in list.activeShips)
-            //{
-              //  TextBox1.Text = ship.ToString();
-            //}
-            //TextBox1.Text = list.ToString();
+            
             TextBox1.Text = map.DrawToStr();
         }
     }

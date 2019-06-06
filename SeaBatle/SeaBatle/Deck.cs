@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeaBatle
 {
-    class Deck
+    class Deck : AbstractCell
     {
         public Deck(AShip ship)
         {
@@ -15,5 +15,11 @@ namespace SeaBatle
         }
         public Status status;
         public AShip ship;
+        public override Status GetStatus()
+        {
+            
+            return status;
+            
+        }
     }
 }

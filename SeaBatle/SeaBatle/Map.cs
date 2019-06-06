@@ -27,15 +27,15 @@ namespace SeaBatle
                 }
             }
         }
-        public bool CheckCell(int x,int y)
+        private bool CheckCellForSetShip(int x,int y)
         {
-            if (x >= 0 && x<mapSize && y>=0 && y < mapSize)
+            if (CheckForCellExist(x,y))
             {
                 for(int i = x - 1; i <= x + 1; i++)
                 {
                     for(int j = y - 1; j <= y + 1; j++)
                     {
-                        if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                        if (CheckForCellExist(i,j))
                         {
                             if (cells[i, j].deck != null)
                             {
@@ -56,7 +56,7 @@ namespace SeaBatle
             {
                 for(int i=x;i<x+size;i++)
                 {
-                    if (!CheckCell(i, y))
+                    if (!CheckCellForSetShip(i, y))
                         return false;
                 }
             }
@@ -64,7 +64,7 @@ namespace SeaBatle
             {
                 for (int i = x; i > x - size; i--)
                 {
-                    if (!CheckCell(i, y))
+                    if (!CheckCellForSetShip(i, y))
                         return false;
                 }
             }
@@ -72,7 +72,7 @@ namespace SeaBatle
             {
                 for (int i = y; i < y + size; i++)
                 {
-                    if (!CheckCell(x, i))
+                    if (!CheckCellForSetShip(x, i))
                         return false;
                 }
             }
@@ -80,7 +80,7 @@ namespace SeaBatle
             {
                 for (int i = y; i > y - size;i--)
                 {
-                    if (!CheckCell(x, i))
+                    if (!CheckCellForSetShip(x, i))
                         return false;
                 }
             }
@@ -147,6 +147,31 @@ namespace SeaBatle
             return map;
         }
 
-
+        public Status GetStatusCell(int x, int y)
+        {
+            return cells[x, y].GetStatus();
+        }
+        public bool CheckForCellExist(int x,int y)
+        {
+            return (x >= 0 && x < mapSize && y >= 0 && y < mapSize);
+        }
+        public bool CheckForShootableCell(int x,int y)
+        {
+            if (CheckForCellExist(x, y))
+                if (GetStatusCell(x, y) == Status.ok)
+                    return true;
+            return false;
+        }
+        public bool CheckForHitCell(int x, int y)
+        {
+            if (CheckForCellExist(x, y))
+                if (GetStatusCell(x, y) == Status.hit)
+                    return true;
+            return false;
+        }
+        public Status CheckShootResult(int x, int y)
+        {
+            return cells[x, y].TakeShoot(x, y);
+        }
     }
 }

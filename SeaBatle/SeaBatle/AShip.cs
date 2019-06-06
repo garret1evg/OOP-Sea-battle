@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 enum Status
 {
     ok,
+    miss,
     hit,
     destroyed
 }
@@ -30,7 +31,7 @@ namespace SeaBatle
         {
             this.status = Status.ok;
             size = lenght;
-            for (int i = 0; i < lenght; i++)
+            for (int i = 0; i < size; i++)
             {
                 this.decks.Add(new Deck(this));
             }
