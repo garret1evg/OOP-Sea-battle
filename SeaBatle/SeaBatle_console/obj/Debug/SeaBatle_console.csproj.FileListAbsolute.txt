@@ -1,0 +1,7 @@
+D:\projects\c#\seaBatle\SeaBatle\SeaBatle_console\obj\Debug\SeaBatle_console.csproj.CoreCompileInputs.cache
+D:\projects\c#\seaBatle\SeaBatle\SeaBatle_console\bin\Debug\SeaBatle_console.exe.config
+D:\projects\c#\seaBatle\SeaBatle\SeaBatle_console\bin\Debug\SeaBatle_console.exe
+D:\projects\c#\seaBatle\SeaBatle\SeaBatle_console\bin\Debug\SeaBatle_console.pdb
+D:\projects\c#\seaBatle\SeaBatle\SeaBatle_console\obj\Debug\SeaBatle_console.exe
+D:\projects\c#\seaBatle\SeaBatle\SeaBatle_console\obj\Debug\SeaBatle_console.pdb
+D:\projects\c#\seaBatle\SeaBatle\SeaBatle_console\obj\Debug\SeaBatle_console.csprojAssemblyReference.cache

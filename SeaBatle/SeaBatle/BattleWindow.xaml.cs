@@ -29,7 +29,7 @@ namespace SeaBatle
         }
         private void BattleLoad(object sender, RoutedEventArgs e)
         {
-            AddText("AWLJRBFGHLKEARBG");
+            
             //texbox1.Text = "aaaa";
             for(int x = 50; (x-50) < sizeGrig* distanseBetweenButtons; x+= distanseBetweenButtons)
             {
@@ -47,6 +47,7 @@ namespace SeaBatle
                     
                 }
             }
+            
         }
     }
 }
