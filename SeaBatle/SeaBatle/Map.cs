@@ -171,7 +171,37 @@ namespace SeaBatle
         }
         public Status CheckShootResult(int x, int y)
         {
-            return cells[x, y].TakeShoot(x, y);
+            return ShootingStatusManager.TakeShoot(cells[x, y]);
+        }
+        public void SetStatus(Status status,int x,int y)
+        {
+            if(status == Status.destroyed)
+            {
+                BlowCell(x, y);
+            }
+            else
+            {
+                cells[x, y].SetStatus(status);
+            }
+            
+        }
+        private void BlowCell(int x,int y)
+        {
+            cells[x, y].SetStatus(Status.destroyed);
+            for(int i = x - 1; i <= x + 1; i++)
+                {
+                for (int j = y - 1; j <= y + 1; j++)
+                {
+                    if (CheckForCellExist(i, j))
+                    {
+                        if (cells[i, j].GetStatus() == Status.ok)
+                            cells[i, j].SetStatus(Status.miss);
+                        else if (cells[i, j].GetStatus() == Status.hit)
+                            BlowCell(i,j);
+                    }
+
+                }
+            }
         }
     }
 }

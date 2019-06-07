@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeaBatle
 {
-    class Deck : AbstractCell
+    class Deck : IStatusManager
     {
         public Deck(AShip ship)
         {
@@ -15,11 +15,19 @@ namespace SeaBatle
         }
         public Status status;
         public AShip ship;
-        public override Status GetStatus()
+        public Status GetStatus()
         {
             
             return status;
             
+        }
+        public Status TakeShoot()
+        {
+            status = Status.hit;
+            IStatusManager shipToStatusManager = new ShipToStatusManager(ship);
+            status = ShootingStatusManager.TakeShoot(shipToStatusManager);
+            return status;
+
         }
     }
 }

@@ -58,6 +58,8 @@
     <Compile Include="Game.cs" />
     <Compile Include="ShipCreator.cs" />
     <Compile Include="ShipList.cs" />
+    <Compile Include="ShootingStatusManager.cs" />
+    <Compile Include="ShootingTurn.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="User.cs" />
     <Page Include="MainWindow.xaml">

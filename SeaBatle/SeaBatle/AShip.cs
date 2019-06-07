@@ -21,7 +21,31 @@ enum Direction
 
 namespace SeaBatle
 {
-    abstract class AShip
+    interface IShipManager
+    {
+        
+        Status GetStatusShip();
+        Status ShipTakeShoot();
+    }
+    class ShipToStatusManager : IStatusManager
+    {
+        //adapter
+        AShip ship;
+        public ShipToStatusManager(AShip ship)
+        {
+            this.ship = ship;
+        }
+        public Status GetStatus()
+        {
+            return ship.GetStatusShip();
+        }
+        public Status TakeShoot()
+        {
+            return ship.ShipTakeShoot();
+        }
+    }
+
+    abstract class AShip : IShipManager
     {
         public Status status;
         public int size;
@@ -36,11 +60,39 @@ namespace SeaBatle
                 this.decks.Add(new Deck(this));
             }
         }
+        private bool CheckForBlow()
+        {
+            bool blow = true;
+            foreach (Deck deck in decks)
+            {
+                if (deck.GetStatus() == Status.ok)
+                    blow = false;
+            }
+            return blow;
+        }
 
         public void Blow()
         {
-            Console.WriteLine("Ship was destroyed");
+            foreach (Deck deck in decks)
+            {
+                deck.status = Status.destroyed;
+            }
+            status = Status.destroyed;
         }
+        public Status GetStatusShip()
+        {
+            return status;
+        }
+        public Status ShipTakeShoot()
+        {
+            status = Status.hit;
+            if (CheckForBlow())
+            {
+                Blow();
+            }
+            return status;
+        }
+
 
     }
     class Submarine : AShip

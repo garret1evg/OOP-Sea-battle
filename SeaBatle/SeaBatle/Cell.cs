@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SeaBatle
 {
-    abstract class AbstractCell
+    interface IStatusManager
     {
         //proxy
-        public abstract Status GetStatus();
-        public abstract Status TakeShoot(int x,int y);
+        Status GetStatus();
+        Status TakeShoot();
     }
-    class Cell : AbstractCell
+    class Cell : IStatusManager
     {
         public Cell(int x, int y)
         {
@@ -39,20 +39,29 @@ namespace SeaBatle
                 return "O";
             else return "*";
         }
-        public override Status GetStatus()
+        public Status GetStatus()
         {
             if (deck == null)
                 return status;
             else
                 return deck.GetStatus();
         }
-        public override Status TakeShoot(int x, int y)
+        public Status TakeShoot()
         {
             if (deck == null)
             {
                 status = Status.miss;
                 return status;
             }
+            else
+            {
+                status = ShootingStatusManager.TakeShoot(deck);
+                return status;
+            }
+        }
+        public void SetStatus(Status stat)
+        {
+            status = stat;
         }
     }
 }

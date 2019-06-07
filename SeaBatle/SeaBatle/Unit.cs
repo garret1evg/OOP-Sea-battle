@@ -51,9 +51,14 @@ namespace SeaBatle
             
             return myMap.CheckShootResult(x, y);
         }
-        public void ShootReport(Status status)
+        public void ShootReport(Status status,int x,int y)
         {
 
+            enemyMap.SetStatus(status,x,y);
+        }
+        public void ShipBlow(AShip ship)
+        {
+            list.Delete(ship);
         }
         
     }

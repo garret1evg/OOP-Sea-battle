@@ -30,7 +30,7 @@ namespace SeaBatle
         {
             int[] coord = unitShooting.Shoot();
             Status status = unitDefending.CheckHit(coord[0],coord[1]);
-            unitShooting.ShootReport();
+            unitShooting.ShootReport(status,coord[0], coord[1]);
             if (status == Status.miss)
                 state = new MissState();
             else

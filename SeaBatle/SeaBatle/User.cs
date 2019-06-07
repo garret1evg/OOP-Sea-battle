@@ -51,14 +51,16 @@ namespace SeaBatle
             int x = -1;
             int y = -1;
             bool ready = false;
+            bool firstHit = true;
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
                 {
-                    if (map.CheckForHitCell(i,j))
+                    if (map.CheckForHitCell(i,j)&&firstHit)
                     {
                         x = i;
                         y = j;
+                        firstHit = false;
                     }
                 }
             }
