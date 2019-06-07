@@ -32,12 +32,21 @@ namespace SeaBatle
         {
             if (deck != null)
                 if (deck.status == Status.ok)
+                {
                     return "S";
-                else
+                }else if (deck.status == Status.hit)
+                {
                     return "X";
+                }
+                else
+                {
+                    return "K";
+                }
             if (status == Status.ok)
+            {
                 return "O";
-            else return "*";
+            }
+            else { return "M"; }
         }
         public Status GetStatus()
         {
@@ -62,6 +71,12 @@ namespace SeaBatle
         public void SetStatus(Status stat)
         {
             status = stat;
+        }
+        public AShip GetShip()
+        {
+            if (deck != null)
+                return deck.GetShip();
+            return null;
         }
     }
 }

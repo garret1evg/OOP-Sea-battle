@@ -55,13 +55,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BattleWindow.xaml.cs">
+      <DependentUpon>BattleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="ShipCreator.cs" />
     <Compile Include="ShipList.cs" />
     <Compile Include="ShootingStatusManager.cs" />
     <Compile Include="ShootingTurn.cs" />
+    <Compile Include="StrategyEndGame.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="User.cs" />
+    <Page Include="BattleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

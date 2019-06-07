@@ -17,6 +17,9 @@ namespace SeaBatle
         {
             activeShips.Remove(ship);
         }
-        
+        public bool IsEmpty()
+        {
+            return !activeShips.Any();
+        }
     }
 }

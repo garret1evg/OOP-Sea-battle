@@ -8,10 +8,11 @@ namespace SeaBatle
 {
      class Unit
     {
-        Map myMap;
+        public Map myMap;
         Map enemyMap;
         User user;
-        ShipList list;
+        public ShipList list;
+        IEndGame end;
         public Unit (Map myMap,Map enMap,User u,ShipList l)
         {
             this.myMap = myMap;
@@ -42,7 +43,7 @@ namespace SeaBatle
             do
             {
                 coords = user.Shoot(enemyMap);
-            } while (enemyMap.CheckForShootableCell(coords[0], coords[1]));
+            } while (!enemyMap.CheckForShootableCell(coords[0], coords[1]));
             
             return coords;
         }
@@ -60,7 +61,19 @@ namespace SeaBatle
         {
             list.Delete(ship);
         }
-        
+        public void SetEnd(IEndGame end)
+        {
+            this.end = end;
+        }
+        public void EndGame()
+        {
+            end.EndGame();
+        }
+        public bool IsEmptyList()
+        {
+            return list.IsEmpty();
+        }
+
     }
 
    

@@ -203,5 +203,9 @@ namespace SeaBatle
                 }
             }
         }
+        public AShip GetShip(int x,int y)
+        {
+            return cells[x, y].GetShip();
+        }
     }
 }

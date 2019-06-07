@@ -29,5 +29,9 @@ namespace SeaBatle
             return status;
 
         }
+        public AShip GetShip()
+        {
+            return ship;
+        }
     }
 }

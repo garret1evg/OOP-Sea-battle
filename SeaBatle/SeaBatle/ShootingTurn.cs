@@ -20,7 +20,7 @@ namespace SeaBatle
         {
             Unit tmp= unitShooting;
             unitShooting = unitDefending;
-            unitDefending = unitShooting;
+            unitDefending = tmp;
         }
         private void EndTurn()
         {
@@ -35,7 +35,11 @@ namespace SeaBatle
                 state = new MissState();
             else
                 state = new HitState();
-            this.EndTurn();
+            if (status == Status.destroyed)
+            {
+                unitDefending.ShipBlow(unitDefending.myMap.GetShip(coord[0], coord[1]));
+            }
+                this.EndTurn();
         }
 
     }

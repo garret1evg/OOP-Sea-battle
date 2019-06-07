@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace SeaBatle
 {
@@ -70,7 +71,7 @@ namespace SeaBatle
                 {
                     x = rand.Next(size);
                     y = rand.Next(size);
-                } while (map.CheckForShootableCell(x,y));
+                } while (!map.CheckForShootableCell(x,y));
                 ready = true;
             }
             else
@@ -82,6 +83,17 @@ namespace SeaBatle
                         x--;
                         ready = true;
                     }
+                    else
+                    {
+                        x++;
+                        do
+                        {
+                            x++;
+                            ready = true;
+                        } while (!map.CheckForShootableCell(x, y));
+                    }
+                    
+                    
                 }
                 if (map.CheckForHitCell(x, y+1))
                 {
@@ -90,14 +102,27 @@ namespace SeaBatle
                         y--;
                         ready = true;
                     }
+                    else
+                    {
+                        y++;
+                        do
+                        {
+                            y++;
+                            ready = true;
+                        } while (!map.CheckForShootableCell(x, y));
+                    }
+                    
                 }
                 if (!ready)
                 {
-                    int dir = rand.Next(4);
-                    int i = x;
-                    int j = y;
+                    int dir;
+                    int i ;
+                    int j ;
                     do
                     {
+                        dir = rand.Next(4);
+                        i = x;
+                        j = y;
                         if (dir == 0)
                         {
                             i--;
@@ -113,11 +138,13 @@ namespace SeaBatle
                         {
                             j++;
                         }
-                    } while (map.CheckForShootableCell(i, j));
+                    } while (!map.CheckForShootableCell(i, j));
                     x = i;
                     y = j;
                 }
             }
+            
+            
             int[] coords = {x,y};
             return coords;
         }
